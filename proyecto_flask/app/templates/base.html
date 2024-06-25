@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Procesador de PDFs{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F9EDE2; /* Linen */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        .logo {
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px; /* Separar el logo de la caja principal */
+        }
+        .centered-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1; /* This makes the container take the remaining space */
+            width: 100%;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 29px; /* Reduced by 20% */
+            border-radius: 9.6px; /* Reduced by 20% */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 79.2%; /* Reduced by 20% */
+            max-width: 960px; /* Reduced by 20% */
+        }
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #092968; /* Deep Sapphire */
+            margin-bottom: 19.2px; /* Reduced by 20% */
+        }
+        .btn-primary {
+            background-color: #FA5609; /* International Orange */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #FBAF7A; /* Macaroni and Cheese */
+        }
+        .form-control {
+            border: 1px solid #092968; /* Deep Sapphire */
+            margin-bottom: 19.2px; /* Reduced by 20% */
+        }
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(250, 86, 9, 0.5); /* International Orange */
+            border-color: #FA5609; /* International Orange */
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #092968; /* Deep Sapphire */
+            border: none;
+            color: #ffffff;
+        }
+        .back-btn:hover {
+            background-color: #FBAF7A; /* Macaroni and Cheese */
+        }
+    </style>
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+    {% if show_back_button %}
+        <a href="{{ url_for('upload.upload_file') }}" class="btn btn-secondary back-btn">Atrás</a>
+    {% endif %}
+    <img class="logo" src="{{ url_for('static', filename='images/decide.png') }}" alt="Decide Logo">
+    {% block content %}{% endblock %}
+</body>
+</html>

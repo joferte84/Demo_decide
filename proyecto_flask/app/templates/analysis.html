@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Análisis de JSON{% endblock %}
+
+{% block content %}
+<div class="centered-form">
+    <div class="form-container">
+        <h1 class="text-center">Análisis de JSON</h1>
+        <form id="upload-analysis-form" method="post" enctype="multipart/form-data" action="{{ url_for('analysis.analysis') }}">
+            <div class="form-group">
+                <input type="file" name="files" class="form-control" multiple required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Subir y Analizar</button>
+        </form>
+        {% if graphs %}
+            <h3 class="mt-3">Resultados del análisis:</h3>
+            {% for graph in graphs %}
+                <div class="graph mt-3">
+                    <img src="{{ graph }}" alt="Gráfico de Análisis" class="img-fluid">
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
