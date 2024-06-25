@@ -20,6 +20,16 @@ def ordenar_datos(data_dict):
 def to_pretty_json(data):
     return json.dumps(data, indent=4, ensure_ascii=False)
 
+def guardar_resultados(results):
+    extraction_folder = os.path.join(current_app.root_path, 'extracción')
+    if not os.path.exists(extraction_folder):
+        os.makedirs(extraction_folder)
+
+    for idx, result in enumerate(results):
+        file_path = os.path.join(extraction_folder, f'result_{idx + 1}.json')
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(result, f, ensure_ascii=False, indent=4)
+
 def process_pdf(file_path, api_key):
     try:
         extracted_text = extract_info_from_pdf(file_path)
@@ -75,6 +85,7 @@ def upload_file():
                 socketio.emit('progress_update', {'progress': progress}, namespace='/')
 
         session['results'] = results
+        guardar_resultados(results)
         socketio.emit('progress_update', {'progress': 100}, namespace='/')
         return redirect(url_for('upload.results'))
 
