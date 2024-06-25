@@ -2,7 +2,9 @@
 
 ## Descripción
 
-El Procesador de PDFs es una aplicación web desarrollada en Flask que permite a los usuarios cargar múltiples facturas de la luz en PDF, procesarlos y extraer información clave usando la API de OpenAI. Los resultados se pueden visualizar y analizar en una página de resultados.
+El Procesador de PDFs es una aplicación web desarrollada en Flask que permite a los usuarios cargar múltiples facturas de la luz en PDF, procesarlos y extraer información clave usando la API de OpenAI. 
+
+Los resultados se pueden visualizar y analizar en una página de resultados.
 
 ## Características
 
